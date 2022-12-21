@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FACEBOOK</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="wrapper">
+        <form action="">
+            <h3 class="heading">facebook</h3>
+            <div id="formcontainer">
+                <div class="head">
+                    <h3>create a new account</h3>
+                    <p>it's Quick and easy</p>
+                    
+                </div>
+                <div class="form_controls">
+                    <span id="code_warn"></span>
+                    <div class="first">
+                        <input type="name" name="name" placeholder="first name" title="enter" id="fname">
+                         <input type="text" placeholder="surname" id="sName">
+                    </div>
+                    <div class="tel">
+                        <input type="tel" placeholder="mobile number or email" id="tel">
+                         <input type="password" placeholder="new password" id="pwd">
+                    </div>
+                    <div class="DOB">
+                        <h3>Date of birth</h3>
+                        <input type="date" id="date">
+
+                    </div>
+                    <div class="gender">
+                        <h3 class="sub">Gender?</h3>
+                        <label class="sex">Female<input type="radio"></label>
+                        <label class="sex">Male<input type="radio"></label>
+                        <label class="sex">Custom<input type="radio"></label>
+                    </div>
+                    <div class="text">
+                        <p>people who use our services may have uploaded your information to facebook</p>
+                        <p><a href="#">learn more</a>
+                            By clicking sign up,you agree to our <a href="#">Terms</a>
+                            <a href="#">Data Policy</a> and <a href="#">Cookie Policy.</a> You may receive SMS notification from us and can opt out at any time
+                        </p>
+                    </div>
+                    <div class="footer">
+                        <button type='button' onclick="userprof()">
+                            submit
+                        </button>
+
+                        <a href="#">Already have an account</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+    <script>
+                   //parameter declaration
+        //the saved is a variable for local storage
+        //get the element from your html document
+        function userprof(fname, pwd, tel, sName, saved){
+          fname = document.getElementById('fname').value.trim(); 
+          pwd = document.getElementById('pwd').value.trim(); 
+          tel = document.getElementById('tel').value.trim(); 
+          sName = document.getElementById('sName').value.trim(); 
+          //count the characters lenght of the value enter by the user
+          let fname_length=fname.length;
+          let pwd_length=pwd.length;
+          let tel_length=tel.length;
+          let sName_length=sName.length;
+          if(fname_length == 0 ||  pwd_length ==0 || tel_length ==0 || sName_length ==0){
+              alert('hey enter your name');
+              let code_warn = document.getElementById('code_warn');
+              console.log("code_warn");
+              code_warn.innerHTML = '<h3>space need not to be empty</h3>'
+            }else if(fname_length !=0 ||pwd_length !=0 || tel_length !=0 || sName_length !=0 ){
+               const pattern = /[A-Z]/i;
+               // if(pattern.test(fname)){
+                    alert('welcome ' + fname);
+                   const vault = [];
+                  saved = localStorage.getItem('task');
+                  if(saved ==null || saved ==undefined){
+                    vault.push({fname:fname,pwd:pwd,sName:sName,tel:tel,});
+                     console.log(vault);
+                   localStorage.setItem('task', JSON.stringify(vault));
+                     //arr.push({sName,});
+                     //console.log(arr);
+                     //localStorage.setItem('saved', JSON.stringify(arr));
+                    // let key =localStorage.getItem('key');
+                     //if(key==null || key ==undefined){
+                       // key.push({sName,});
+                       // localStorage.setItem('key',JSON.stringify(key));
+                     }
+                   }
+                }
+            
+
+
+
+        
+    </script>
+    
+</body>
+</html>
